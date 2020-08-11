@@ -1,0 +1,9 @@
+__pycache__/
+
+.idea/
+.code-workspace
+.vscode/
+
+Static/credential.py
+
+venv/
