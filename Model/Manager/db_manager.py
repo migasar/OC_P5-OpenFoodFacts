@@ -3,6 +3,7 @@ From the creation of the database and its components,
 to the insertion of the data in the database.
 """
 
+import os
 import mysql.connector as mysql
 from mysql.connector import Error
 
@@ -42,11 +43,13 @@ class DBManager(Borg):
 
         # default values for the parameters of the connection
         if host_name is None:
-            host_name = credential.DB_HOST
+            host_name = os.environ.get('DB_HOST', credential.DB_HOST)
         if user_name is None:
-            user_name = credential.DB_USER
+            user_name = os.environ.get('DB_USER', credential.DB_USER)
         if user_password is None:
-            user_password = credential.DB_PASSWORD
+            user_password = os.environ.get(
+                'DB_PASSWORD', credential.DB_PASSWORD
+                )
 
         # parameters of the connection
         self.host_name = host_name
